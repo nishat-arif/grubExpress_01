@@ -8,12 +8,11 @@ const Body= () => {
         <div className="search"></div>
         <div className="restaurant-list">
             <h1 className="restaurant-list-title">Restaurants in your area</h1>
-
             <div className="restaurant-cards">
-                <RestaurantCard /><RestaurantCard />
-                <RestaurantCard /><RestaurantCard />
-                <RestaurantCard /><RestaurantCard />
-                <RestaurantCard /><RestaurantCard />
+                <RestaurantCard  resName="Pizza Hut" cuisine="Pizzas"/>
+                <RestaurantCard resName="MacD" cuisine="Burgers"/>
+              
+
             </div>
             
         </div>

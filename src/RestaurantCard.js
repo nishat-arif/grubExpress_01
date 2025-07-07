@@ -1,5 +1,6 @@
- export const RestaurantCard = () => {
-
+ export const RestaurantCard = (props) => {
+    console.log(props);  
+    const {resName, cuisine} = props; // destrtucturing props
     const resNameStyle ={margin: "5px"}
 
     return (
@@ -10,9 +11,9 @@
                 className="restaurant-image"
             />
             <div className="restaurant-details">
-                <h4 style={resNameStyle}>Pizza Hut Foods</h4>
+                <h4 style={resNameStyle}>{resName}</h4>
                 <p className="restaurant-details-font">4.4 stars 23 minutes</p>
-                <p className="restaurant-details-font">Pizzas</p>              
+                <p className="restaurant-details-font">{cuisine}</p>              
                 <p className="restaurant-details-font"> Hinjewadi</p>
             </div>
             
