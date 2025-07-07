@@ -3,10 +3,6 @@ import ReactDOM from "react-dom/client";
 import Header from "./Header";
 import Body from "./Body";
 
-
-
-
-
 const App =()=>{
     return (
         <div className="app">
@@ -15,8 +11,6 @@ const App =()=>{
         </div>
     );
 }
-
-
 
 const root= ReactDOM.createRoot(document.getElementById("root"));
 

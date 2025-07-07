@@ -1,10 +1,21 @@
- const Body= () => {
+
+import { RestaurantCard } from "./RestaurantCard";
+
+const Body= () => {
+
     return (
     <div>
         <div className="search"></div>
-        <div className="restaurantList">
-            <h1>Restaurant List</h1>
-            {/* Add restaurant cards here */}
+        <div className="restaurant-list">
+            <h1 className="restaurant-list-title">Restaurants in your area</h1>
+
+            <div className="restaurant-cards">
+                <RestaurantCard /><RestaurantCard />
+                <RestaurantCard /><RestaurantCard />
+                <RestaurantCard /><RestaurantCard />
+                <RestaurantCard /><RestaurantCard />
+            </div>
+            
         </div>
 
     </div>
