@@ -90,3 +90,8 @@ margin: 5px;
     padding: 10px;
     border : 2px solid black;
 }
+
+.bold-font{
+    font-weight:bold;
+    color:black
+}

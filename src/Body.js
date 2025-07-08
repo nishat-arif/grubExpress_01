@@ -5,20 +5,20 @@ import React from "react";
 
 const Body= () => {
 
+    const restaurantList = resList.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
+    //console.log(restaurantList);
+
     return (
     <div>
         <div className="search"></div>
         <div className="restaurant-list">
             <h1 className="restaurant-list-title">Restaurants in your area</h1>
             <div className="restaurant-cards">
-                <RestaurantCard  resData={resList.data.cards[4].card.card.gridElements.infoWithStyle.restaurants[0]}/>
-                <RestaurantCard  resData={resList.data.cards[4].card.card.gridElements.infoWithStyle.restaurants[1]}/>
-              
-              <RestaurantCard  resData={resList.data.cards[4].card.card.gridElements.infoWithStyle.restaurants[2]}/>
-              
-              <RestaurantCard  resData={resList.data.cards[4].card.card.gridElements.infoWithStyle.restaurants[3]}/>
-              
-              
+
+                {restaurantList.map((restaurant) => (
+                    <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+                ))}
+
 
             </div>
             
