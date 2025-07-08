@@ -1,6 +1,9 @@
+
+ 
  export const RestaurantCard = (props) => {
     console.log(props);  
-    const {resName, cuisine} = props; // destrtucturing props
+    const {resData} = props;
+    const {name, cuisines} = resData.info;
     const resNameStyle ={margin: "5px"}
 
     return (
@@ -11,9 +14,9 @@
                 className="restaurant-image"
             />
             <div className="restaurant-details">
-                <h4 style={resNameStyle}>{resName}</h4>
+                <h4 style={resNameStyle}>{name}</h4>
                 <p className="restaurant-details-font">4.4 stars 23 minutes</p>
-                <p className="restaurant-details-font">{cuisine}</p>              
+                <p className="restaurant-details-font">{cuisines.join(", ")}</p>              
                 <p className="restaurant-details-font"> Hinjewadi</p>
             </div>
             

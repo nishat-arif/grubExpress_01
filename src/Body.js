@@ -1,5 +1,7 @@
 
 import { RestaurantCard } from "./RestaurantCard";
+import {resList }from "../utils/mockData";
+import React from "react";
 
 const Body= () => {
 
@@ -9,8 +11,13 @@ const Body= () => {
         <div className="restaurant-list">
             <h1 className="restaurant-list-title">Restaurants in your area</h1>
             <div className="restaurant-cards">
-                <RestaurantCard  resName="Pizza Hut" cuisine="Pizzas"/>
-                <RestaurantCard resName="MacD" cuisine="Burgers"/>
+                <RestaurantCard  resData={resList.data.cards[4].card.card.gridElements.infoWithStyle.restaurants[0]}/>
+                <RestaurantCard  resData={resList.data.cards[4].card.card.gridElements.infoWithStyle.restaurants[1]}/>
+              
+              <RestaurantCard  resData={resList.data.cards[4].card.card.gridElements.infoWithStyle.restaurants[2]}/>
+              
+              <RestaurantCard  resData={resList.data.cards[4].card.card.gridElements.infoWithStyle.restaurants[3]}/>
+              
               
 
             </div>
