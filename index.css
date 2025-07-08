@@ -10,15 +10,15 @@
     font-family: Gilroy, sans-serif;
 }
 
-    .fixed-header ::scroll-marker{
+    /* .fixed-header ::scroll-marker{
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      /* z-index: 999; Ensure it stays on top of other content  */
+      /* z-index: 999;} Ensure it stays on top of other content  */
       /* background-color: #ffffff; Add a background to prevent content from showing through */
       /* Add any other desired styling like padding, box-shadow, etc. */
-    }
+    
 .logo{
     width: auto;
     height: 100%;
@@ -93,14 +93,17 @@
 
 
 
-.restaurant-card{
-    margin:10px;
+.restaurant-card {
+    margin: 10px;
     width: 250px;
-    
     border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.restaurant-card:hover{ 
+.restaurant-card:hover {
+    transform: scale(0.95); /* Zoom out effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
     border: 1px solid #ccc;
     cursor: pointer;
 }
@@ -138,4 +141,17 @@ margin: 5px;
     font-weight:bold;
     font-family: Gilroy, sans-serif;
     color:black
+}
+
+.shimmer-container{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-block{
+    width:250px;
+    height:150px;
+    background-color: #f0f0f0;
+    margin:20px;
+    border-radius: 8px;
 }

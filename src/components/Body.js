@@ -1,14 +1,28 @@
 
 import { RestaurantCard } from "./RestaurantCard";
 import {resList }from "../../utils/mockData";
-import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
+import { getRestaurantData } from "../services/getRestaurantData";
+import { Shimmer } from "./Shimmer";
 
 const Body= () => {
 
-    const restaurantData= resList.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
+    const [restaurantList, setRestaurantList]= useState([])
 
-    const [restaurantList, setRestaurantList]= useState(restaurantData)
+    useEffect(()=>{
+        getRestaurantData()
+                .then(res => {
+                    // Adjust this path based on your API response structure
+                    const fetchedRestaurants = res.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
+                    setRestaurantList(fetchedRestaurants);
+                })
+                .catch(err => {
+                    console.error("Failed to fetch restaurant data:", err);
+                });
+   
+    }, [])
+
 
 
     const filterByRating =()=>{
@@ -25,34 +39,39 @@ const Body= () => {
         setRestaurantList(restaurantData);
     }
 
-    return (
-    <div>
-        <div className="search"></div>
-        <div className="restaurant-list">
-            <div className="restaurant-list-header">
-                <h1 className="restaurant-list-title">Restaurants with online food delivery in your area</h1>
-                <div className="restaurants-filters">
-                    <button className="filter-btn" onClick={filterByRating}>Ratings 4.3+</button>
-                    <button className="filter-btn">Fast Delivery</button>  
-                    <button className="filter-btn">Pure Veg</button>
-                    <button className="filter-btn">Rs.300 - Rs.600</button>
-                    <button className="filter-btn">Less than Rs.300</button>
-                    <button className="filter-btn" onClick={filterReset}>No filter</button>
-                </div>
-            </div>
-            
-            <div className="restaurant-cards">
 
-                {restaurantList.map((restaurant) => (
-                    <RestaurantCard key={restaurant.info.id} resData={restaurant} />
-                ))}
+                return (<div>
+                        <div className="search"></div>
+                        <div className="restaurant-list">
+                            <div className="restaurant-list-header">
+                                <h1 className="restaurant-list-title">Restaurants with online food delivery in your area</h1>
+                                <div className="restaurants-filters">
+                                    <button className="filter-btn" onClick={filterByRating}>Ratings 4.3+</button>
+                                    <button className="filter-btn">Fast Delivery</button>  
+                                    <button className="filter-btn">Pure Veg</button>
+                                    <button className="filter-btn">Rs.300 - Rs.600</button>
+                                    <button className="filter-btn">Less than Rs.300</button>
+                                    <button className="filter-btn" onClick={filterReset}>No filter</button>
+                                </div>
+                            </div>
+                            
+                            <div className="restaurant-cards">
+                                {restaurantList.length === 0 ? (
+                                    <Shimmer />
+                                ) : (
+                                    restaurantList.map((restaurant) => (
+                                        <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+                                    ))
+                                )}
 
 
-            </div>
-            
-        </div>
+                            </div>
+                            
+                        </div>
 
-    </div>
-    )};
+                    </div>
+                    )
 
-    export default Body;
+};
+
+export default Body;
