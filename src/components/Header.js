@@ -1,9 +1,10 @@
-import { LOGO_URL} from "../utils/constants"; 
+import { LOGO_URL} from "../../utils/constants"; 
 
 const Header = () => {
 
     return (
         <div className="header">
+ 
           <div className="logo">
             <img src={LOGO_URL} alt="GrubExpress Logo" className="logo_img"></img>
         </div>
