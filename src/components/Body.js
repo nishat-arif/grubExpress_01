@@ -6,7 +6,7 @@ import { useState } from "react";
 import { getRestaurantData } from "../services/getRestaurantData";
 import { Shimmer } from "./Shimmer";
 import { Search } from "./Search";
-import { filterByDeliveryTime } from "../services/filter";
+import { filterByDeliveryTime, filterByVegType } from "../services/filter";
 
 const Body= () => {
 
@@ -14,27 +14,41 @@ const Body= () => {
     const [filteredRestaurantList, setFilteredRestaurantList]= useState([])
 
     useEffect(()=>{
-        getRestaurantData()
-                .then(res => {
-                    // Adjust this path based on your API response structure
-                    const fetchedRestaurants = res.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
-                    setRestaurantList(fetchedRestaurants);
-                    setFilteredRestaurantList(fetchedRestaurants);
-                })
-                .catch(err => {
-                    console.error("Failed to fetch restaurant data:", err);
-                });
+                getRestaurantData()
+                    .then(res => {
+                        // Adjust this path based on your API response structure
+                        const fetchedRestaurants = res.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
+                        setRestaurantList(fetchedRestaurants);
+                        setFilteredRestaurantList(fetchedRestaurants);
+                    })
+                    .catch(err => {
+                        console.error("Failed to fetch restaurant data:", err);
+                    });
+
+                //start: filtering by Veg 
+                const getFilterResByVeg =(data)=>{
+                setFilteredRestaurantList(data.detail.length==1? [data.detail[0]] : data.detail);}             
+                //end: filtering by Veg 
 
 
-                //filtering by Delivery time
+                //start: filtering by Delivery time
                 const getFilterResByDelTime =(data)=>{
                 setFilteredRestaurantList(data.detail.length==1? [data.detail[0]] : data.detail);}
+                //end: filtering by Delivery 
 
-                window.addEventListener('filterByDelTimeEvent', getFilterResByDelTime);
 
+
+
+                window.addEventListener('filterByVegEvent', getFilterResByVeg);
+                window.addEventListener('filterByDelTimeEvent', getFilterResByVeg);
                 return () => {
+                window.removeEventListener('filterByVegEvent', getFilterResByVeg);
                 window.removeEventListener('filterByDelTimeEvent', getFilterResByDelTime);
                 };
+
+                
+
+                
    
     }, [])
 
@@ -43,8 +57,9 @@ const Body= () => {
         filterByDeliveryTime(restaurantList);
     }
 
-    
-
+    const handleClickFilterByVeg =()=>{
+        filterByVegType(restaurantList)
+    }
 
     const filterByRating =()=>{
         const filteredList = restaurantList.filter((restaurant) => {
@@ -75,7 +90,7 @@ const Body= () => {
                                 <div className="restaurants-filters">
                                     <button className="filter-btn" onClick={filterByRating}>Ratings 4.3+</button>
                                     <button className="filter-btn" onClick={handleClickFilterByDelTime}>Fast Delivery</button>  
-                                    <button className="filter-btn">Pure Veg</button>
+                                    <button className="filter-btn" onClick={handleClickFilterByVeg}>Pure Veg</button>
                                     <button className="filter-btn">Rs.300 - Rs.600</button>
                                     <button className="filter-btn">Less than Rs.300</button>
                                     <button className="filter-btn" onClick={filterReset}>No filter</button>

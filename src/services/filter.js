@@ -12,3 +12,18 @@
         window.dispatchEvent(myCustomEvent);
 
     }
+
+    export const filterByVegType =(data) =>{
+
+        const filteredByVeg = data.filter((restaurant) => {
+            return restaurant.info?.veg  == true
+        });
+
+        const myCustomEvent = new CustomEvent('filterByVegEvent', {
+        detail: filteredByVeg
+        });
+
+        window.dispatchEvent(myCustomEvent);
+
+    }
+
