@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { getRestaurantData } from "../services/getRestaurantData";
 import { Shimmer } from "./Shimmer";
+import { Search } from "./Search";
+import { filterByDeliveryTime } from "../services/filter";
 
 const Body= () => {
 
@@ -15,25 +17,39 @@ const Body= () => {
         getRestaurantData()
                 .then(res => {
                     // Adjust this path based on your API response structure
-                    const fetchedRestaurants = res.data.cards[3].card.card.gridElements.infoWithStyle.restaurants;
+                    const fetchedRestaurants = res.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
                     setRestaurantList(fetchedRestaurants);
                     setFilteredRestaurantList(fetchedRestaurants);
                 })
                 .catch(err => {
                     console.error("Failed to fetch restaurant data:", err);
                 });
+
+
+                //filtering by Delivery time
+                const getFilterResByDelTime =(data)=>{
+                setFilteredRestaurantList(data.detail.length==1? [data.detail[0]] : data.detail);}
+
+                window.addEventListener('filterByDelTimeEvent', getFilterResByDelTime);
+
+                return () => {
+                window.removeEventListener('filterByDelTimeEvent', getFilterResByDelTime);
+                };
    
     }, [])
 
 
+    const handleClickFilterByDelTime = ()=>{
+        filterByDeliveryTime(restaurantList);
+    }
+
+    
+
 
     const filterByRating =()=>{
-        // Filter restaurants with avgRating >= 4.3
-        const filteredList = filteredRestaurantList.filter((restaurant) => {
+        const filteredList = restaurantList.filter((restaurant) => {
             return restaurant.info.avgRating >= 4.3;
         });
-
-        // Update the state with the filtered list
         setFilteredRestaurantList(filteredList);
     }
 
@@ -42,14 +58,23 @@ const Body= () => {
     }
 
 
-                return (<div>
+    const handleSearchData =(data)=>{
+        const filteredSearch = restaurantList.filter(res=>{
+            return res.info.name.toLowerCase().includes(data.toLowerCase())
+        })
+        setFilteredRestaurantList(filteredSearch);
+
+    }
+
+
+                return (<div> 
                         <div className="search"></div>
                         <div className="restaurant-list">
                             <div className="restaurant-list-header">
-                                <h1 className="restaurant-list-title">Restaurants with online food delivery in your area</h1>
+                                <Search onSearchTextSend ={handleSearchData}/>
                                 <div className="restaurants-filters">
                                     <button className="filter-btn" onClick={filterByRating}>Ratings 4.3+</button>
-                                    <button className="filter-btn">Fast Delivery</button>  
+                                    <button className="filter-btn" onClick={handleClickFilterByDelTime}>Fast Delivery</button>  
                                     <button className="filter-btn">Pure Veg</button>
                                     <button className="filter-btn">Rs.300 - Rs.600</button>
                                     <button className="filter-btn">Less than Rs.300</button>
@@ -65,12 +90,8 @@ const Body= () => {
                                         <RestaurantCard key={restaurant.info.id} resData={restaurant} />
                                     ))
                                 )}
-
-
-                            </div>
-                            
+                            </div>                           
                         </div>
-
                     </div>
                     )
 

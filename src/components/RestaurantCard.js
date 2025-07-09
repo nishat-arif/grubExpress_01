@@ -1,7 +1,7 @@
 import {RESTAURANT_IMG_PREFIX} from "../../utils/constants";
  
  export const RestaurantCard = (props) => {
-    console.log(props);  
+  
     const {resData} = props;
     const {name, cuisines, cloudinaryImageId, avgRatingString, sla,locality} = resData.info;
     const resNameStyle ={margin: "5px 5px 5px 0px"}
