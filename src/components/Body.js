@@ -9,13 +9,15 @@ import { Shimmer } from "./Shimmer";
 const Body= () => {
 
     const [restaurantList, setRestaurantList]= useState([])
+    const [filteredRestaurantList, setFilteredRestaurantList]= useState([])
 
     useEffect(()=>{
         getRestaurantData()
                 .then(res => {
                     // Adjust this path based on your API response structure
-                    const fetchedRestaurants = res.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
+                    const fetchedRestaurants = res.data.cards[3].card.card.gridElements.infoWithStyle.restaurants;
                     setRestaurantList(fetchedRestaurants);
+                    setFilteredRestaurantList(fetchedRestaurants);
                 })
                 .catch(err => {
                     console.error("Failed to fetch restaurant data:", err);
@@ -27,16 +29,16 @@ const Body= () => {
 
     const filterByRating =()=>{
         // Filter restaurants with avgRating >= 4.3
-        const filteredList = restaurantList.filter((restaurant) => {
+        const filteredList = filteredRestaurantList.filter((restaurant) => {
             return restaurant.info.avgRating >= 4.3;
         });
 
         // Update the state with the filtered list
-        setRestaurantList(filteredList);
+        setFilteredRestaurantList(filteredList);
     }
 
     const filterReset =()=>{
-        setRestaurantList(restaurantData);
+        setFilteredRestaurantList(restaurantList);
     }
 
 
@@ -59,7 +61,7 @@ const Body= () => {
                                 {restaurantList.length === 0 ? (
                                     <Shimmer />
                                 ) : (
-                                    restaurantList.map((restaurant) => (
+                                    filteredRestaurantList.map((restaurant) => (
                                         <RestaurantCard key={restaurant.info.id} resData={restaurant} />
                                     ))
                                 )}

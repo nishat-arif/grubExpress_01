@@ -4,7 +4,6 @@ export const getRestaurantData = async () => {
     const data = await fetch(CORS_PROXY + API_URL);
 
     const json_data = await data.json();
-
-    return await json_data;
+    return  json_data;
 
 }
