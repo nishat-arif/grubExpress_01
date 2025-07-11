@@ -1,7 +1,8 @@
 
-import {useState } from "react";
+import React, {useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {CORS_PROXY, RESTAURANT_URL_PREFIX} from "../../utils/constants";
+import {getRestaurantDetails} from "../services/getRestaurantData"
+import {Shimmer} from "./Shimmer"
 
 const RestaurantCard =() =>{
 
@@ -10,33 +11,24 @@ const RestaurantCard =() =>{
 
     const [restaurantDetail,setRestaurantDetail]= useState([])
 
-    const getRestaurantDetails = async () => {
-        const data = await fetch(CORS_PROXY + RESTAURANT_URL_PREFIX +resId);
-    
-        const json_data = await data.json();
-        console.log("/////",json_data)
-        //json_data.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards
-        return  json_data;
-    
-    }
+    useEffect(()=>{
 
-    // useEffect=()=>{
-
-    //     getRestaurantDetails(resId)
-    //                         .then(res => {
-    //                             // Adjust this path based on your API response structure
-    //                             console.log("res",res)
-    //                             const getRestaurantDetail = res;
-    //                             setRestaurantDetail(getRestaurantDetail);
-    //                         })
-    //                         .catch(err => {
-    //                             console.error("Failed to fetch restaurant data:", err);
-    //                         });
-    //     console.log("getResDetails", getRestaurantDetail) ,[]
-    // }
-    return (
+        getRestaurantDetails(resId)
+                            .then(res => {
+                                // Adjust this path based on your API response structure
+                                
+                                const getRestaurantDetail = res;
+                                console.log("res",getRestaurantDetail.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.categories)
+                                setRestaurantDetail(getRestaurantDetail);
+                            })
+                            .catch(err => {
+                                console.error("Failed to fetch restaurant data:", err);
+                            });
+                        },[]
+)
+    return restaurantDetail.length==0? <Shimmer/> :(
         <div>
-            <h1 onClick={getRestaurantDetails}>Res</h1>
+            <h1>{}</h1>
         </div>
     )
 }
