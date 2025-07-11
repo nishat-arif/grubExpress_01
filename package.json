@@ -1,45 +1,45 @@
 {
-  "name": "grabit",
+  "name": "grubexpress",
   "version": "1.0.0",
-  "description": "food delivery app",
-  "main": "./App.js",
-  "targets": {
-    "default": {
-      "source": "./index.html",
-      "distDir": "./output"
-    },
-    "main": false
-  },
+  "description": "This is food delivery app",
   "scripts": {
-    "start": "parcel index.html --open",
+    "start": "parcel index.html",
     "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nishat-arif/grabIt.git"
+    "url": "git+https://github.com/nishat-arif/grubExpress_01/git"
   },
-  "keywords": [
-    "foodDeliveryApp"
-  ],
+  "keywords": [],
   "author": "Nishat Arif",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nishat-arif/grabIt/issues"
+    "url": "https://github.com/nishat-arif/grubExpress_01/issues"
   },
-  "homepage": "https://github.com/nishat-arif/grabIt#readme",
+  "homepage": "https://github.com/nishat-arif/grubExpress_01#readme",
   "devDependencies": {
-    "parcel": "^2.15.4",
-    "process": "^0.11.10"
+    "@babel/core": "^7.22.9",
+    "@babel/preset-env": "^7.22.9",
+    "@babel/preset-react": "^7.22.5",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^14.0.0",
+    "babel-jest": "^29.6.2",
+    "jest": "^29.6.2",
+    "jest-environment-jsdom": "^29.6.2",
+    "parcel": "^2.8.3",
+    "postcss": "^8.4.24",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.3.2"
   },
   "dependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "@reduxjs/toolkit": "^1.9.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.1",
     "react-router-dom": "^6.11.2"
   },
   "browserslist": [
-    "last 2 Chrome versions",
-    "last 2 Firefox versions",
-    "last 2 Safari versions"
+    "last 2 versions"
   ]
 }

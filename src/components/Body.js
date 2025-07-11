@@ -1,5 +1,5 @@
 
-import { RestaurantCard } from "./RestaurantCard";
+import { RestaurantCardsList } from "./RestaurantCardsList";
 import {resList }from "../../utils/mockData";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -7,6 +7,7 @@ import { getRestaurantData } from "../services/getRestaurantData";
 import { Shimmer } from "./Shimmer";
 import { Search } from "./Search";
 import { filterByDeliveryTime, filterByVegType } from "../services/filter";
+import { Link } from "react-router-dom";
 
 const Body= () => {
 
@@ -102,7 +103,10 @@ const Body= () => {
                                     <Shimmer />
                                 ) : (
                                     filteredRestaurantList.map((restaurant) => (
-                                        <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+                                        <Link to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id} >
+                                            <RestaurantCardsList resData={restaurant} />
+                                        </Link>
+                                        
                                     ))
                                 )}
                             </div>                           

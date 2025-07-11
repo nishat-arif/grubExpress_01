@@ -12,4 +12,8 @@ export const CORS_PROXY  = "https://corsproxy.io/?" // to bypass CORS policy iss
 export const API_URL = 
 "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.578104&lng=73.687314&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
 
+export const RESTAURANT_URL_PREFIX = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.578104&lng=73.687314&restaurantId="
+
+export const RESTAURANT_URL_SUFFIX ="&catalog_qa=undefined&submitAction=ENTER"
+
 
