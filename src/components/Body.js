@@ -8,11 +8,13 @@ import { Shimmer } from "./Shimmer";
 import { Search } from "./Search";
 import { filterByDeliveryTime, filterByVegType } from "../services/filter";
 import { Link } from "react-router-dom";
+import OfferTag from "./OfferTag";
 
 const Body= () => {
 
     const [restaurantList, setRestaurantList]= useState([])
     const [filteredRestaurantList, setFilteredRestaurantList]= useState([])
+    const RestaurantCardsListWithOffer = OfferTag(RestaurantCardsList)
 
     useEffect(()=>{
                 getRestaurantData()
@@ -104,7 +106,10 @@ const Body= () => {
                                 ) : (
                                     filteredRestaurantList.map((restaurant) => (
                                         <Link to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id} >
-                                            <RestaurantCardsList resData={restaurant} />
+                                         {(restaurant?.info?.aggregatedDiscountInfoV3.header.includes("ITEMS")) ?
+                                         (<RestaurantCardsListWithOffer resData={restaurant}/> ) :
+                                         (<RestaurantCardsList resData={restaurant}/> )
+                                         }   
                                         </Link>
                                         
                                     ))

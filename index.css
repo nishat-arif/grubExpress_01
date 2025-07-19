@@ -167,3 +167,17 @@ margin: 5px;
     padding: 10px;
     margin :20px;
 }
+
+.item-container{
+    display:flex;
+}
+
+.item-heading{
+    font-size: medium;
+    font-weight:bolder;
+    cursor: pointer;
+}
+
+.img-width{
+    width:25%;
+}

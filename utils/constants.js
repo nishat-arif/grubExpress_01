@@ -7,6 +7,8 @@ export const IMG2_URL = 'https://img.freepik.com/free-vector/hand-drawn-food-car
 
 export const RESTAURANT_IMG_PREFIX =  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" ;
 
+export const ITEM_IMG_PREFIX ="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/"
+
 export const CORS_PROXY  = "https://corsproxy.io/?" // to bypass CORS policy issue 
 
 export const API_URL = 
