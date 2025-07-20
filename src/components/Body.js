@@ -20,7 +20,12 @@ const Body= () => {
                 getRestaurantData()
                     .then(res => {
                         // Adjust this path based on your API response structure
-                        const fetchedRestaurants = res.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
+                        const resGrid = res.data.cards.filter((item, index)=>{
+                                            if( item.card?.card?.gridElements?.infoWithStyle?.restaurants){
+                                                return item;
+                                            }
+                        })
+                        const fetchedRestaurants = resGrid[0].card.card.gridElements.infoWithStyle.restaurants;
                         setRestaurantList(fetchedRestaurants);
                         setFilteredRestaurantList(fetchedRestaurants);
                     })
@@ -101,12 +106,12 @@ const Body= () => {
                             </div>
                             
                             <div className="restaurant-cards">
-                                {restaurantList.length === 0 ? (
+                                {restaurantList?.length === 0 ? (
                                     <Shimmer />
                                 ) : (
-                                    filteredRestaurantList.map((restaurant) => (
+                                    filteredRestaurantList?.map((restaurant) => (
                                         <Link to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id} >
-                                         {(restaurant?.info?.aggregatedDiscountInfoV3.header.includes("ITEMS")) ?
+                                         {(restaurant?.info?.aggregatedDiscountInfoV3?.header.includes("ITEMS")) ?
                                          (<RestaurantCardsListWithOffer resData={restaurant}/> ) :
                                          (<RestaurantCardsList resData={restaurant}/> )
                                          }   

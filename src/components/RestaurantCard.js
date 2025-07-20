@@ -4,8 +4,11 @@ import {Shimmer} from "./Shimmer"
 
 import { useRestaurantDetail } from "../../utils/useRestaurantDetail";
 import {RestaurantCardItems} from "../components/RestaurantCardItems"
+import { useState } from "react";
 
 const RestaurantCard =() =>{
+
+const [showItemIndex , setShowItemIndex] = useState(null)
 
 const {resId} = useParams()
 const restaurantDetail = useRestaurantDetail(resId);
@@ -18,14 +21,15 @@ const categories = restaurantDetail.data?.cards[4]?.groupedCard?.cardGroupMap?.R
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
 
-    console.log("catgories" , categories)
-
     return restaurantDetail.length==0? <Shimmer/> :(
         <div>
             <h1>{cardName}</h1> 
 
             {categories?.map((category, index) => (
-                <RestaurantCardItems  key={category?.card?.card.title} data={category?.card?.card}/>
+                <RestaurantCardItems  key={category?.card?.card.title} data={category?.card?.card} 
+                showItems={index === showItemIndex ? true :false}
+                setShowItems={()=>{setShowItemIndex(index)}}
+                currIndex = {index}/>
       ))}
 
             

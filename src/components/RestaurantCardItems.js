@@ -3,27 +3,28 @@ import { ItemsList } from "./ItemsList";
 
 export const RestaurantCardItems = (props) => {
 
-    const [showItem , setShowItem] = useState(false)
+    //const [showItem1 , setShowItem] = useState(false)
 
-    const {data}  = props;
+    const {data ,showItems , setShowItems, currIndex}  = props;
+
 
     const handleClick=()=>{
-     setShowItem(!showItem)
-
+     //setShowItem(!showItem)
+        setShowItems();
     }
 
     return (
         <div>
         <div className="item-heading"
-        
+        onClick={handleClick} 
         >
-            <span onClick={handleClick} >
+            <span >
             {data.title} ({data.itemCards.length})
             </span>
             <span>⬇️</span>
         </div>
         <div>
-             {showItem && <ItemsList items={data.itemCards}/>}
+             {showItems && <ItemsList items={data.itemCards}/>}
         </div>
         </div>
     )
