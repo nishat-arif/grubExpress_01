@@ -181,3 +181,7 @@ margin: 5px;
 .img-width{
     width:25%;
 }
+
+.loggedInUser-font{
+    font-weight:900;
+}

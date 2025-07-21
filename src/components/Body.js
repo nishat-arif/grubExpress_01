@@ -1,7 +1,7 @@
 
 import { RestaurantCardsList } from "./RestaurantCardsList";
 import {resList }from "../../utils/mockData";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { getRestaurantData } from "../services/getRestaurantData";
 import { Shimmer } from "./Shimmer";
@@ -9,12 +9,15 @@ import { Search } from "./Search";
 import { filterByDeliveryTime, filterByVegType } from "../services/filter";
 import { Link } from "react-router-dom";
 import OfferTag from "./OfferTag";
+import { UserContext } from "../../utils/userContext";
 
 const Body= () => {
 
     const [restaurantList, setRestaurantList]= useState([])
     const [filteredRestaurantList, setFilteredRestaurantList]= useState([])
     const RestaurantCardsListWithOffer = OfferTag(RestaurantCardsList)
+
+    const {loggedInUser , setUserName} = useContext(UserContext);
 
     useEffect(()=>{
                 getRestaurantData()
@@ -101,7 +104,8 @@ const Body= () => {
                                     <button className="filter-btn" onClick={handleClickFilterByVeg}>Pure Veg</button>
                                     <button className="filter-btn">Rs.300 - Rs.600</button>
                                     <button className="filter-btn">Less than Rs.300</button>
-                                    <button className="filter-btn" onClick={filterReset}>No filter</button>
+                                    {/* <button className="filter-btn" onClick={filterReset}>No filter</button> */}
+                                    <input defaultValue={loggedInUser} onChange={(e)=>setUserName(e?.target?.value)}></input>
                                 </div>
                             </div>
                             

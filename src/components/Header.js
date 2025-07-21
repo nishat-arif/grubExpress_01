@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 import { LOGO_URL} from "../../utils/constants"; 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useOnlineStatus } from "../../utils/useOnlineStatus";
+import { UserContext } from "../../utils/userContext";
+
 
 const Header = () => {
 
     const [btnText, setBtnText] = useState('Login')
     const onlineStatus = useOnlineStatus();
+    const {loggedInUser} = useContext(UserContext)
+
 
     // handleLoginBtn=()=>{
     //     if(btnText.toLowerCase() == 'login'){
@@ -32,6 +36,7 @@ const Header = () => {
                 <li><Link to="/about">About</Link></li>
                 <li><Link to="/contact">Contact</Link></li> 
                 <li><Link to="/cart">Cart</Link></li>
+                <li><Link to="">{loggedInUser}</Link></li>
                 {/* <button type="button" onClick={handleLoginBtn}>{btnText}</button> */}
             </ul>
         </div>
