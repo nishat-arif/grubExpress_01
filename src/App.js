@@ -12,6 +12,9 @@ import { useOnlineStatus } from "../utils/useOnlineStatus";
 import { Shimmer } from "./components/Shimmer";
 //import Grocery from "./components/Grocery";
 import { UserContext } from "../utils/userContext";
+import { Provider } from "react-redux";
+import appStore from "../utils/AppStore";
+import Cart from "./components/Cart";
 
 const Grocery = lazy(()=>import ("./components/Grocery"))
 
@@ -38,7 +41,9 @@ const App =()=>{
 
 
     return (
-        <>
+        <div>
+            <Provider store={appStore}>
+
             <UserContext.Provider value={{loggedInUser : userName , setUserName}}>
                 <div className="app">
                     {/* <UserContext.Provider value={{loggedInUser : "Admin"}}> */}
@@ -49,7 +54,8 @@ const App =()=>{
                     <Footer/>    
                 </div>
             </UserContext.Provider>
-        </>
+            </Provider>
+        </div>
     );
 }
 
@@ -76,6 +82,9 @@ const appRouter = createBrowserRouter([
 
         {path:"/restaurant/:resId",
         element:<RestaurantCard/>},
+
+        {path:"/cart",
+        element:<Cart/>},
 
          {path:"/grocery",
         element:<Suspense fallback={<h1>Loading......</h1>}><Grocery/></Suspense>,

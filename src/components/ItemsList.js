@@ -1,6 +1,16 @@
+import { useDispatch } from "react-redux";
 import {ITEM_IMG_PREFIX, CORS_PROXY} from "../../utils/constants"
+import { addItem } from "../../utils/cartSlice";
 
 export const ItemsList = ({ items }) => {
+
+  const dispatch = useDispatch()
+
+  const handleAddItem=(item)=>{
+
+    dispatch(addItem(item))
+
+  }
 
    return (
     <div className="itemList-container">
@@ -22,8 +32,8 @@ export const ItemsList = ({ items }) => {
           </div>
           <div >
             <div>
-              <button
-              >
+              <button style={{"cursor":"pointer"}}
+              onClick={()=>handleAddItem(item)}>
                 Add +
               </button>
             </div>

@@ -29,7 +29,8 @@ const categories = restaurantDetail.data?.cards[4]?.groupedCard?.cardGroupMap?.R
                 <RestaurantCardItems  key={category?.card?.card.title} data={category?.card?.card} 
                 showItems={index === showItemIndex ? true :false}
                 setShowItems={()=>{setShowItemIndex(index)}}
-                currIndex = {index}/>
+                currIndex = {index}
+                showItemIndex ={showItemIndex}/>
       ))}
 
             

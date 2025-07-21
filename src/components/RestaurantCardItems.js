@@ -5,7 +5,7 @@ export const RestaurantCardItems = (props) => {
 
     //const [showItem1 , setShowItem] = useState(false)
 
-    const {data ,showItems , setShowItems, currIndex}  = props;
+    const {data ,showItems , setShowItems}  = props;
 
 
     const handleClick=()=>{
