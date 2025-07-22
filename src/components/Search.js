@@ -13,11 +13,11 @@ export const Search =(props) => {
 
 
     return  (
-        <div className="search-container">
+        <div className="m-2">
 
-            <input className="search-input" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}></input>
+            <input className="w-48 border border-solid border-black  mr-2" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}></input>
 
-            <button type="button" className="search-btn" onClick={handleSearchClick}>Search</button>
+            <button type="button" className="bg-gray-200 px-4 py-1 m-4 rounded-sm" onClick={handleSearchClick}>Search</button>
         </div>
         )
 }

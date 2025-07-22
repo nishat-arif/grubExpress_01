@@ -14,14 +14,14 @@ export const RestaurantCardItems = (props) => {
     }
 
     return (
-        <div>
-        <div className="item-heading"
+        <div className="w-6/12 mx-auto my-4 bg-gray-50 shadow-lg p-4">
+        <div className="flex justify-between cursor-pointer"
         onClick={handleClick} 
         >
-            <span >
+              <span className="font-bold text-lg">
             {data.title} ({data.itemCards.length})
-            </span>
-            <span>⬇️</span>
+          </span>
+          <span>⬇️</span>
         </div>
         <div>
              {showItems && <ItemsList items={data.itemCards}/>}

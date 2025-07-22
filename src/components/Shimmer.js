@@ -1,15 +1,15 @@
 export const Shimmer =()=>{
     return(
-        <div className="shimmer-container">
-            <div className="shimmer-block"></div>
-            <div className="shimmer-block"></div>
-            <div className="shimmer-block"></div>
-            <div className="shimmer-block"></div>
-            <div className="shimmer-block"></div>
-            <div className="shimmer-block"></div>
-            <div className="shimmer-block"></div>
-            <div className="shimmer-block"></div>
-            <div className="shimmer-block"></div>            
+        <div className="flex flex-wrap">
+            <div className=" border border-solid  bg-gray-100 w-[250px] h-[350px] m-4"></div>
+            <div className=" border border-solid  bg-gray-100 w-[250px] h-[350px] m-4"></div>
+            <div className=" border border-solid  bg-gray-100 w-[250px] h-[350px] m-4"></div>
+            <div className=" border border-solid  bg-gray-100 w-[250px] h-[350px] m-4"></div>
+            <div className=" border border-solid  bg-gray-100 w-[250px] h-[350px] m-4"></div>
+            <div className=" border border-solid  bg-gray-100 w-[250px] h-[350px] m-4"></div>
+            <div className=" border border-solid  bg-gray-100 w-[250px] h-[350px] m-4"></div>
+            <div className=" border border-solid bg-gray-100 w-[250px] h-[350px] m-4"></div>
+            <div className=" border border-solid  bg-gray-100 w-[250px] h-[350px] m-4"></div>            
         </div>
     )
 }

@@ -13,14 +13,14 @@ export const ItemsList = ({ items }) => {
   }
 
    return (
-    <div className="itemList-container">
+    <div>
       {items.map((item) => (
         <div
           key={item.card.info.id}
-        className="item-container">
-          <div >
-            <div className="item-name">
-              <span>{item.card.info.name}</span>
+        className="p-2 m-2 border-gray-200 border-b-2 text-left flex justify-between">
+          <div className="w-9/12" >
+            <div className="py-2">
+              <span className="text-bold">{item.card.info.name}</span>
               <span>
                 - ₹
                 {item.card.info.price
@@ -28,16 +28,16 @@ export const ItemsList = ({ items }) => {
                   : item.card.info.defaultPrice / 100}
               </span>
             </div>
-            <p >{item.card.info.description}</p>
+            <p className="text-xs">{item.card.info.description}</p>
           </div>
-          <div >
-            <div>
-              <button style={{"cursor":"pointer"}}
+          <div className="w-3/12 p-4">
+            <div className="absolute">
+              <button style={{"cursor":"pointer"}} className="p-1 mx-8 rounded-lg bg-green-100 text-black shadow-lg"
               onClick={()=>handleAddItem(item)}>
                 Add +
               </button>
             </div>
-            <img src={ITEM_IMG_PREFIX + item.card.info.imageId} className="img-width"/>
+            <img src={ITEM_IMG_PREFIX + item?.card?.info?.imageId} className="w-full" />
           </div>
         </div>
       ))}

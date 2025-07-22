@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const RestaurantCard =() =>{
 
-const [showItemIndex , setShowItemIndex] = useState(null)
+const [showItemIndex , setShowItemIndex] = useState(0)
 
 const {resId} = useParams()
 const restaurantDetail = useRestaurantDetail(resId);
@@ -22,8 +22,8 @@ const categories = restaurantDetail.data?.cards[4]?.groupedCard?.cardGroupMap?.R
     );
 
     return restaurantDetail.length==0? <Shimmer/> :(
-        <div>
-            <h1>{cardName}</h1> 
+        <div className="text-center">
+            <h1 className="font-bold my-6 text-2xl">{cardName}</h1> 
 
             {categories?.map((category, index) => (
                 <RestaurantCardItems  key={category?.card?.card.title} data={category?.card?.card} 

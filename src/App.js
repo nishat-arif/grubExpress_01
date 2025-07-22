@@ -45,7 +45,7 @@ const App =()=>{
             <Provider store={appStore}>
 
             <UserContext.Provider value={{loggedInUser : userName , setUserName}}>
-                <div className="app">
+                <div className="flex flex-col h-screen justify-between ">
                     {/* <UserContext.Provider value={{loggedInUser : "Admin"}}> */}
                         <Header /> 
                     {/* </UserContext.Provider> */}

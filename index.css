@@ -1,14 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 
-.header{
+
+/* .header{{
     display: flex;
     justify-content: space-between;
     height: 100px;
     background-color: beige;
     padding: 10px;
-    /* border : 2px solid black; */
+
     font-family: Gilroy, sans-serif;
-}
+} */
 
     /* .fixed-header ::scroll-marker{
       position: fixed;
@@ -19,7 +23,7 @@
       /* background-color: #ffffff; Add a background to prevent content from showing through */
       /* Add any other desired styling like padding, box-shadow, etc. */
     
-.logo{
+/* .logo{
     width: auto;
     height: 100%;
 
@@ -65,7 +69,7 @@
 }
 
 .restaurant-list-title{
-    /* text-align: center; */
+
     font-size: 24px;
     color: black;
     margin: 20px 0;
@@ -78,15 +82,14 @@
     display: flex;
     justify-content: end; 
     gap: 10px;
-    /* //margin-bottom: 20px; */
+
 }
 
 .restaurant-cards{
     display: flex;
     flex-wrap: wrap; 
     justify-content: start;
-    /* padding: 20px;
-    gap: 20px; */
+
     background-color: #f8f9fa;
 }
 
@@ -101,7 +104,7 @@
 }
 
 .restaurant-card:hover {
-    transform: scale(0.95); /* Zoom out effect */
+    transform: scale(0.95); 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     border: 1px solid #ccc;
@@ -134,7 +137,7 @@ margin: 5px;
     height: 100px;
     background-color: beige;
     padding: 10px;
-    /* border : 2px solid black; */
+
 }
 
 .bold-font{
@@ -184,4 +187,4 @@ margin: 5px;
 
 .loggedInUser-font{
     font-weight:900;
-}
+} */

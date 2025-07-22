@@ -94,22 +94,21 @@ const Body= () => {
 
 
                 return (<div> 
-                        <div className="search"></div>
-                        <div className="restaurant-list">
-                            <div className="restaurant-list-header">
+                        <div >
+                            <div className="flex justify-between items-center">
                                 <Search onSearchTextSend ={handleSearchData}/>
-                                <div className="restaurants-filters">
-                                    <button className="filter-btn" onClick={filterByRating}>Ratings 4.3+</button>
-                                    <button className="filter-btn" onClick={handleClickFilterByDelTime}>Fast Delivery</button>  
-                                    <button className="filter-btn" onClick={handleClickFilterByVeg}>Pure Veg</button>
-                                    <button className="filter-btn">Rs.300 - Rs.600</button>
-                                    <button className="filter-btn">Less than Rs.300</button>
+                                <div className="flex items-center">
+                                    <button className=" border border-solid border-black mx-2 py-0 px-1 bg-gray-200 rounded-sm" onClick={filterByRating}>Ratings 4.3+</button>
+                                    <button className="border border-solid border-black  mx-2 py-0 px-1 bg-gray-200  rounded-sm" onClick={handleClickFilterByDelTime}>Fast Delivery</button>  
+                                    <button className=" border border-solid border-black mx-2 py-0 px-1 bg-gray-200 rounded-sm" onClick={handleClickFilterByVeg}>Pure Veg</button>
+                                    <button className="border border-solid border-black mx-2 py-0 px-1 bg-gray-200 rounded-sm">Rs.300 - Rs.600</button>
+                                    <button className="border border-solid border-black mx-2 py-0 px-1 bg-gray-200 rounded-sm">Less than Rs.300</button>
                                     {/* <button className="filter-btn" onClick={filterReset}>No filter</button> */}
-                                    <input defaultValue={loggedInUser} onChange={(e)=>setUserName(e?.target?.value)}></input>
+                                    <input  className="border border-solid border-black mx-2 py-0 px-1" defaultValue={loggedInUser} onChange={(e)=>setUserName(e?.target?.value)}></input>
                                 </div>
                             </div>
                             
-                            <div className="restaurant-cards">
+                            <div className="flex flex-wrap">
                                 {restaurantList?.length === 0 ? (
                                     <Shimmer />
                                 ) : (
